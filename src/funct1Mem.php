@@ -24,7 +24,7 @@
 // $dbhost = 'localhost';
 // $dbuser = 'root';
 // $dbpass = '';
-// $dbdata = 'is4c_op';
+// $dbdata = op';
 
 // $db = mysql_connect($dbhost,$dbuser,$dbpass);
 // mysql_select_db($dbdata,$db);

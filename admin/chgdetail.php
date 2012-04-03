@@ -44,7 +44,7 @@ if(isset($_POST['submit'])){
 }
 
 $query = "SELECT date(d.datetime) as date, SUM(d.total) as charges
-	FROM custdata c, is4c_log.dtransactions d
+	FROM custdata c, michell3_is4c_log.dtransactions d
 	WHERE d.card_no = c.CardNo
 	AND datetime >= '".$ps."'
 	AND datetime <= '".$pe."'

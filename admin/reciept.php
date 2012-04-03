@@ -26,7 +26,7 @@ require_once($_SERVER["DOCUMENT_ROOT"].'/src/mysql_connect.php');
 
 $date = '2007-08-05';
 
-$trans = "SELECT description, quantity, unitPrice, total FROM is4c_log.dtransactions 
+$trans = "SELECT description, quantity, unitPrice, total FROM michell3_is4c_log.dtransactions 
 	WHERE date(datetime) = ". $date ."
 	AND register_no = 1 AND emp_no = 7008
 	and trans_no = 20";

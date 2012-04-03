@@ -61,12 +61,12 @@ if(isset($_POST['submit'])){
 }
 
 if(isset($_POST["Submit"])) {
-	$query = mysql_query("SELECT * FROM is4c_log.payperiods WHERE periodID = ". $_POST["period"]);
+	$query = mysql_query("SELECT * FROM michell3_is4c_log.payperiods WHERE periodID = ". $_POST["period"]);
 	$row = mysql_fetch_array($query);
 	$pay_start = $row["periodStart"];
 	$pay_end = $row["periodEnd"];
 } else {
-	$query = mysql_query("SELECT * FROM is4c_log.payperiods WHERE curdate() >= periodEnd LIMIT 1");
+	$query = mysql_query("SELECT * FROM michell3_is4c_log.payperiods WHERE curdate() >= periodEnd LIMIT 1");
 	$row = mysql_fetch_array($query);
 	$pay_start = $row["periodStart"];
 	$pay_end = $row["periodEnd"];
@@ -129,7 +129,7 @@ if (isset($_GET['sort'])) { // If a non-default sort has been chosen.
 }
 
 $query = "SELECT c.CardNo, c.LastName, c.FirstName, s.staff_desc, SUM(d.total) as charges
-	FROM custdata c, staff s, is4c_log.dtransactions d
+	FROM custdata c, staff s, michell3_is4c_log.dtransactions d
 	WHERE d.card_no = c.CardNo
 	AND datetime >= '".$pay_start."'
 	AND datetime <= '".$pay_end."'
@@ -169,7 +169,7 @@ echo "</table><br><br>";
 
 echo "<table width=100% border=0><tr><td colspan='3' height='1' bgcolor='cccccc'></td></tr></table>";
 
-$query = "SELECT * FROM is4c_log.payperiods WHERE periodEnd <= curdate() LIMIT 27"; 
+$query = "SELECT * FROM michell3_is4c_log.payperiods WHERE periodEnd <= curdate() LIMIT 27"; 
 $results = mysql_query($query) or
 	die("<li>errorno=".mysql_errno()
 		."<li>error=" .mysql_error()

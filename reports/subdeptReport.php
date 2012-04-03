@@ -24,7 +24,7 @@
 setlocale(LC_MONETARY, 'en_US');
 include($_SERVER["DOCUMENT_ROOT"].'/src/functions.php');
 $db = mysql_connect('localhost',$_SESSION["mUser"],$_SESSION["mPass"]);
-mysql_select_db('is4c_log',$db);
+mysql_select_db(log',$db);
 
 //if(isset($_GET['XL'])){
 //	header("Content-Disposition: inline; filename=subdeptReportXL.xls");
@@ -154,7 +154,7 @@ $subdeptQ = "SELECT s.dept_name AS dept,
 					ROUND(SUM(t.total),2) as total,
 					ROUND((SUM(t.total)/$gross)*100,2) AS pctDept,
 					ROUND((SUM(t.total)/$grossAll)*100,2) AS pctAll
-				FROM dtransactions t, is4c_op.subdeptIndex s
+				FROM dtransactions t, michell3_is4c_op.subdeptIndex s
 				WHERE t.upc = s.upc
 				AND date(t.datetime) >= '$date1' AND date(t.datetime) <= '$date2'
 				AND t.department IN(" . $_SESSION['deptArray'] . ")

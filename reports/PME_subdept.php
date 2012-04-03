@@ -39,9 +39,9 @@
 
 // MySQL host name, user name, password, database, and table
 $opts['hn'] = 'localhost';
-$opts['un'] = 'root';
-$opts['pw'] = '';
-$opts['db'] = 'is4c_log';
+$opts['un'] = 'michell3_she';
+$opts['pw'] = 'm3ssimba33**';
+$opts['db'] = 'michell3_is4c_log';
 $opts['tb'] = 'dtransactions';
 
 // Name of field which is the unique key

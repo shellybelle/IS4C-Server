@@ -88,7 +88,7 @@ setlocale(LC_MONETARY, 'en_US');
 
 	if (isset($sales)) {
 		$grossQ = "SELECT ROUND(sum(total), 2) as GROSS_sales
-			FROM is4c_log.dtransactions 
+			FROM michell3_is4c_log.dtransactions 
     		WHERE datetime >= '$date1a' AND datetime <= '$date2a' 
 			AND department <= 35
 			AND department <> 0
@@ -103,7 +103,7 @@ setlocale(LC_MONETARY, 'en_US');
 			FROM(
 		  		SELECT * FROM (
 		    		SELECT IFNULL(SUM(total), 0) as TOT
-		    		FROM is4c_log.dtransactions
+		    		FROM michell3_is4c_log.dtransactions
 		    		WHERE datetime >= '$date1a' AND datetime <= '$date2a' 
 		    		AND department >= 45 AND department <> 0
 		    		AND trans_status <> 'X'
@@ -112,7 +112,7 @@ setlocale(LC_MONETARY, 'en_US');
 			UNION
 			SELECT * FROM (
 				SELECT IFNULL(-SUM(total), 0) AS TOT
-					FROM is4c_log.dtransactions
+					FROM michell3_is4c_log.dtransactions
 					WHERE datetime >= '$date1a' AND datetime <= '$date2a' 
 					AND trans_subtype IN('IC')
 					AND trans_status <> 'X'
@@ -121,7 +121,7 @@ setlocale(LC_MONETARY, 'en_US');
 			UNION
 		  	SELECT * FROM (
 		    	SELECT IFNULL(SUM(total), 0) AS TOT
-		    		FROM is4c_log.dtransactions
+		    		FROM michell3_is4c_log.dtransactions
 		    		WHERE datetime >= '$date1a' AND datetime <= '$date2a' 
 		    		AND trans_status <> 'X'
 		    		AND upc = 'DISCOUNT'
@@ -139,7 +139,7 @@ setlocale(LC_MONETARY, 'en_US');
 
 		 // sales of inventory departments
 		$invtotalsQ = "SELECT d.department,t.dept_name,ROUND(sum(d.total),2) AS total,ROUND((SUM(d.total)/$gross)*100,2) as pct
-			FROM is4c_log.dtransactions AS d, is4c_op.departments AS t
+			FROM michell3_is4c_log.dtransactions AS d, michell3_is4c_op.departments AS t
 			WHERE d.department = t.dept_no
 			AND date(d.datetime) >= '$date1' AND date(d.datetime) <= '$date2' 
 			AND d.department <= 35 AND d.department <> 0
@@ -149,7 +149,7 @@ setlocale(LC_MONETARY, 'en_US');
 
 		// Sales for non-inventory departments 
 		$noninvtotalsQ = "SELECT d.department,t.dept_name,ROUND(sum(total),2) as total 
-			FROM is4c_log.dtransactions as d join is4c_op.departments as t ON d.department = t.dept_no
+			FROM michell3_is4c_log.dtransactions as d join michell3_is4c_op.departments as t ON d.department = t.dept_no
 			WHERE datetime >= '$date1a' AND datetime <= '$date2a' 
 			AND d.department > 35 AND d.department <> 0
 			AND d.trans_status <> 'X'
@@ -179,7 +179,7 @@ setlocale(LC_MONETARY, 'en_US');
 		if ($gross == 0 || !$gross ) $gross = 1;
 
 		$tendertotalsQ = "SELECT t.TenderName as tender_type,ROUND(-sum(d.total),2) as total,ROUND((-SUM(d.total)/$gross)*100,2) as pct
-			FROM is4c_log.dtransactions as d ,is4c_op.tenders as t 
+			FROM michell3_is4c_log.dtransactions as d , michell3_is4c_op.tenders as t 
 			WHERE d.datetime >= '$date1a' AND d.datetime <= '$date2a'
 			AND d.trans_status <> 'X' 
 			AND d.emp_no <> 9999
@@ -189,7 +189,7 @@ setlocale(LC_MONETARY, 'en_US');
 		$gross = 0;
 
 		$transcountQ = "SELECT COUNT(d.total) as transactionCount
-			FROM is4c_log.dtransactions AS d
+			FROM michell3_is4c_log.dtransactions AS d
 			WHERE d.datetime >= '$date1a' AND d.datetime <= '$date2a'
 			AND d.trans_status <> 'X'
 			AND d.emp_no <> 9999
@@ -217,9 +217,9 @@ setlocale(LC_MONETARY, 'en_US');
 
 		// Total discount
 		$disctotalQ = "SELECT ROUND(-SUM(d.total),2) AS totalDiscounts
-			FROM is4c_log.dtransactions d INNER JOIN
-	  		is4c_op.custdata c ON d.card_no = c.CardNo INNER JOIN
-	  		is4c_op.memtype m ON c.memType = m.memtype
+			FROM michell3_is4c_log.dtransactions d INNER JOIN
+	  		michell3_is4c_op.custdata c ON d.card_no = c.CardNo INNER JOIN
+	  		michell3_is4c_op.memtype m ON c.memType = m.memtype
 			WHERE d.datetime >= '$date1a' AND d.datetime <= '$date2a' 
 	  		AND d.trans_status <>'X'
 			AND d.upc = 'DISCOUNT' 
@@ -233,9 +233,9 @@ setlocale(LC_MONETARY, 'en_US');
 
 		// Discounts by member type;
 		$memtypeQ = "SELECT m.memDesc as memberType,ROUND(-SUM(d.total),2) AS discount 
-			FROM is4c_log.dtransactions d INNER JOIN
-			is4c_op.custdata c ON d.card_no = c.CardNo INNER JOIN
-	  		is4c_op.memtype m ON c.memType = m.memtype
+			FROM michell3_is4c_log.dtransactions d INNER JOIN
+			michell3_is4c_op.custdata c ON d.card_no = c.CardNo INNER JOIN
+	  		michell3_is4c_op.memtype m ON c.memType = m.memtype
 			WHERE d.datetime >= '$date1a' AND d.datetime <= '$date2a' 
 			AND d.upc = 'DISCOUNT'
 	  		AND d.trans_status <>'X'
@@ -244,7 +244,7 @@ setlocale(LC_MONETARY, 'en_US');
 
 		// percentage breakdown
 		$percentQ = "SELECT c.discount AS discount,ROUND(-SUM(d.total),2) AS totals 
-			FROM is4c_log.dtransactions AS d, is4c_op.custdata AS c 
+			FROM michell3_is4c_log.dtransactions AS d, michell3_is4c_op.custdata AS c 
 			WHERE d.card_no = c.CardNo 
 			AND d.datetime >= '$date1a' AND d.datetime <= '$date2a' 	
 			AND d.upc = 'DISCOUNT'
@@ -254,7 +254,7 @@ setlocale(LC_MONETARY, 'en_US');
 
 		// staff discount
 		$staffQ = "SELECT ROUND(-SUM(d.unitPrice),2) AS staff_total 
-			FROM is4c_log.dtransactions AS d, is4c_op.custdata AS c 
+			FROM michell3_is4c_log.dtransactions AS d, michell3_is4c_op.custdata AS c 
 			WHERE d.card_no = c.CardNo 
 			AND d.datetime >= '$date1a' AND d.datetime <= '$date2a' 
 			AND c.staff = 1
@@ -268,7 +268,7 @@ setlocale(LC_MONETARY, 'en_US');
 			
 		//HOO discount
 		$hoodiscQ = "SELECT ROUND(-SUM(d.total),2) 
-			FROM is4c_log.dtransactions AS d, is4c_op.custdata AS c
+			FROM michell3_is4c_log.dtransactions AS d, michell3_is4c_op.custdata AS c
 			WHERE d.card_no = c.CardNo
 			AND d.datetime >= '$date1a' AND d.datetime <= '$date2a'
 			AND c.staff = 3
@@ -294,7 +294,7 @@ setlocale(LC_MONETARY, 'en_US');
 	if(isset($equity)){	
 	
 		$sharetotalsQ = "SELECT d.datetime AS datetime,d.card_no AS cardno,c.LastName AS lastname,ROUND(sum(total),2) as total 
-			FROM is4c_log.dtransactions as d, is4c_op.custdata AS c
+			FROM michell3_is4c_log.dtransactions as d, michell3_is4c_op.custdata AS c
 			WHERE d.card_no = c.CardNo
 			AND c.personNum = 1
 			AND d.datetime >= '$date1a' AND d.datetime <= '$date2a'
@@ -304,7 +304,7 @@ setlocale(LC_MONETARY, 'en_US');
 			GROUP BY d.datetime";
 
 		$sharetotalQ = "SELECT ROUND(SUM(d.total),2) AS Total_share_pmt
-			FROM is4c_log.dtransactions AS d
+			FROM michell3_is4c_log.dtransactions AS d
 			WHERE d.datetime >= '$date1a' AND d.datetime <= '$date2a'
 			AND d.department = 45
 			AND d.trans_status <> 'X'
@@ -315,7 +315,7 @@ setlocale(LC_MONETARY, 'en_US');
 		$sharetotal = $row[0];
 
 		$sharecountQ = "SELECT COUNT(d.total) AS peopleshareCount
-			FROM is4c_log.dtransactions AS d
+			FROM michell3_is4c_log.dtransactions AS d
 			WHERE d.datetime >= '$date1a' AND d.datetime <= '$date2a'
 			AND d.department = 45
 			AND d.trans_status <> 'X'
@@ -336,7 +336,7 @@ setlocale(LC_MONETARY, 'en_US');
 /*
 	if(isset($services)) {
 		$custsvcsQ = "SELECT d.upc AS UPC,d.description AS description,CONCAT(SUM(d.quantity),' X ',d.unitPrice) AS countXprice,ROUND(SUM(d.total),2) AS total
-			FROM is4c_log.dtransactions AS d
+			FROM michell3_is4c_log.dtransactions AS d
 			WHERE d.datetime >= '$date1a' AND d.datetime <= '$date2a'
 			AND d.department = 20
 			AND d.trans_type <> 'D'

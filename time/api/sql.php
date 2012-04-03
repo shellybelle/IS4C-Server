@@ -1,6 +1,6 @@
 <?php
 
-$mysql_connection = mysql_connect("localhost", "root");
+$mysql_connection = mysql_connect("localhost", "michell3_she","m3ssimba33**");
 
 if (!$mysql_connection) {
     echo "SQL Connection Failed<br /> " . mysql_error();
@@ -96,7 +96,7 @@ function get_shift_workers($shift_id)
         SELECT emp_no,
             FirstName,
             LastName
-            FROM is4c_op.employees
+            FROM michell3_is4c_op.employees
                 JOIN employee_shifts
                     USING (emp_no)
             WHERE shift_id = ' . $shift_id . ';';
@@ -152,7 +152,7 @@ function get_active_employees()
         SELECT emp_no,
             FirstName,
             LastName
-            FROM is4c_op.employees
+            FROM michell3_is4c_op.employees
             WHERE EmpActive = 1
             ORDER BY LastName,
                 FirstName;';
@@ -237,8 +237,8 @@ function get_employee_information($emp_id)
 	        employees.email,
             custdata.memType,
             UNIX_TIMESTAMP(custdata.orientationDate) orientationDate
-	        FROM is4c_op.employees
-                LEFT JOIN is4c_op.custdata
+	        FROM michell3_is4c_op.employees
+                LEFT JOIN michell3_is4c_op.custdata
                     ON emp_no = CardNo
 	        WHERE emp_no = ' . $emp_id . ';';
 
@@ -269,7 +269,7 @@ function get_hours_worked($emp_id, $days)
           FirstName,
           LastName,
           SUM(UNIX_TIMESTAMP(shifts.end) - UNIX_TIMESTAMP(shifts.start)) / 3600 "hours_worked"
-          FROM is4c_op.employees
+          FROM michell3_is4c_op.employees
             LEFT JOIN time.employee_shifts
               USING (emp_no)
             LEFT JOIN time.shifts
@@ -306,7 +306,7 @@ function get_employees($status = null)
     $status = mysql_real_escape_string($status);
     $sql_query = '
         SELECT CardNo
-	        FROM is4c_op.custdata
+	        FROM michell3_is4c_op.custdata
 	        WHERE CardNo > 0';
 	if ($status != null && $status != 3)
 	{
@@ -338,7 +338,7 @@ function add_activation($emp_id)
 {
     $emp_id = mysql_real_escape_string($emp_id);
     $sql_query = '
-        UPDATE is4c_op.custdata
+        UPDATE michell3_is4c_op.custdata
             SET memType = 0
             WHERE CardNo = ' . $emp_id . ';';
     mysql_query($sql_query);
@@ -349,7 +349,7 @@ function add_suspension($emp_id)
 {
     $emp_id = mysql_real_escape_string($emp_id);
     $sql_query = '
-        UPDATE is4c_op.custdata
+        UPDATE michell3_is4c_op.custdata
             SET memType = 1
             WHERE CardNo = ' . $emp_id . ';';
     mysql_query($sql_query);
@@ -360,7 +360,7 @@ function add_inactive($emp_id)
 {
     $emp_id = mysql_real_escape_string($emp_id);
     $sql_query = '
-        UPDATE is4c_op.custdata
+        UPDATE michell3_is4c_op.custdata
             SET memType = 2
             WHERE CardNo = ' . $emp_id . ';';
     mysql_query($sql_query);

@@ -168,7 +168,7 @@ else {
  * products.
  */
 
-$data = 'is4c_op';
+$data = 'michell3_is4c_op';
 
 $db = mysql_connect('localhost',$_SESSION["mUser"],$_SESSION["mPass"]);
 mysql_select_db($data,$db);
@@ -189,7 +189,7 @@ $testQ = "select if(u.brand IS NULL,'',substring(u.brand,1,12)) as brand,
 		if(u.upc IS NULL, 'Misc', 'UNFI') as vendor, 
 		if(memberPrice IS NULL,'', memberPrice) as memberPrice,
 		normal_price  
-	from is4c_op.products as p left outer join is4c_op.UNFI as u  on p.upc = u.upc  
+	from michell3_is4c_op.products as p left outer join michell3_is4c_op.UNFI as u  on p.upc = u.upc  
 	WHERE p.department IN('".$dArray."')  
 	AND date(modified) BETWEEN '".$date1."' AND '".$date2."'
 	ORDER BY department";

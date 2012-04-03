@@ -41,7 +41,7 @@
 $opts['hn'] = 'localhost';
 $opts['un'] = 'root';
 $opts['pw'] = '';
-$opts['db'] = 'is4c_op';
+$opts['db'] = op';
 $opts['tb'] = 'products';
 
 // Name of field which is the unique key

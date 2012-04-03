@@ -119,7 +119,7 @@ $query = "SELECT
 		p.description AS Description,
 		SUM(t.quantity) AS Qty,
 		t.discounttype AS sale
-		FROM is4c_log.dtransactions t, is4c_op.products p
+		FROM michell3_is4c_log.dtransactions t, michell3_is4c_op.products p
 		WHERE t.upc = p.upc
 		AND date(t.datetime) >= '$date1' AND date(t.datetime) <= '$date2' 
 		AND p.department IN('" .$_SESSION["deptArray"]."') 

@@ -122,7 +122,7 @@ if(isset($inUse)) {
 	
 if (isset($salesTotal)) {
 	$query1 = "SELECT d.dept_name,ROUND(SUM(t.total),2) AS total
-		FROM is4c_op.departments AS d, is4c_log.dtransactions AS t
+		FROM michell3_is4c_op.departments AS d, michell3_is4c_log.dtransactions AS t
 		WHERE d.dept_no = t.department
 		AND t.datetime >= '$date1a' AND t.datetime <= '$date2a'
 		AND t.department IN(" . $_SESSION['deptArray'] . ")
@@ -153,7 +153,7 @@ if (isset($salesTotal)) {
 if(isset($openRing)) {
 	//$query2 - Total open dept. ring
 	$query2 = "SELECT d.dept_name AS Department,ROUND(SUM(t.total),2) AS open_dept
-		FROM is4c_op.departments AS d,is4c_log.dtransactions AS t 
+		FROM michell3_is4c_op.departments AS d, michell3_is4c_log.dtransactions AS t 
 		WHERE t.datetime >= '$date1a' AND t.datetime <= '$date2a' 
 		AND t.trans_status <> 'X' 
 		AND t.trans_type = 'D' 
@@ -194,7 +194,7 @@ if(isset($pluReport)){
 		SUM(t.quantity) AS Qty,
 		ROUND(SUM(t.total),2) AS Total,
 		p.scale as Scale
-		FROM is4c_log.dtransactions t, is4c_op.products p
+		FROM michell3_is4c_log.dtransactions t, michell3_is4c_op.products p
 		WHERE t.upc = p.upc
 		AND t.department IN(".$_SESSION['deptArray'].") 
 		AND t.datetime >= '$date1a' AND t.datetime <= '$date2a' 

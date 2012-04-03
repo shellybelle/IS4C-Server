@@ -56,8 +56,8 @@ echo "<BODY>";
 $date1a = $date1 . " 00:00:00";
 $date2a = $date2 . " 23:59:59";
 
-$db = mysql_connect("localhost","root");
-mysql_select_db("is4c_log",$db);
+$db = mysql_connect("localhost","michell3_she","m3ssimba33**");
+mysql_select_db("michell3_is4c_log",$db);
 
 $num1 = 0;
 $num2 = 0;

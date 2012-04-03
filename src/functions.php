@@ -27,7 +27,7 @@ require('mysql_connect.php');
 
 
 // $db =mysql_connect('localhost',$_SESSION["mUser"],$_SESSION["mPass"]);
-// mysql_select_db('is4c_op',$db);
+// mysql_select_db(op',$db);
 
 
 

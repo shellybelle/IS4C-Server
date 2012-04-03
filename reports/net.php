@@ -25,7 +25,7 @@ setlocale(LC_MONETARY, 'en_US');
 //$db_date = '2007-03-19';
 
 $db = mysql_connect('localhost',$_SESSION["mUser"],$_SESSION["mPass"]);
-mysql_select_db('is4c_log',$db);
+mysql_select_db(log',$db);
 
 /** 
  * total sales 

@@ -22,7 +22,7 @@
 *********************************************************************************/
 
 include('src/functions.php');
-mysql_select_db('is4c_op',$db);
+mysql_select_db(op',$db);
 
 if(isset($_GET['sort'])){
 /*

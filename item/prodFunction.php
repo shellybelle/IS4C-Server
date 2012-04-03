@@ -61,7 +61,7 @@ function itemParse($upc){
 			**/
 				require($_SERVER["DOCUMENT_ROOT"].'/src/chainedSelectors.php');
 
-				$DatabaseLink = mysql_connect("localhost","root");
+				$DatabaseLink = mysql_connect("localhost","michell3_she","m3ssimba33**");
 				if(!$DatabaseLink)
 				{
 					print("Unable to connect to database!<br>\n");
@@ -69,7 +69,7 @@ function itemParse($upc){
 				}
 
 				//select test database
-				if(!(mysql_select_db("is4c_op", $DatabaseLink)))
+				if(!(mysql_select_db("michell3_is4c_op", $DatabaseLink)))
 				{
 					print("Unable to use the test database!<br>\n");
 					exit();
@@ -85,7 +85,7 @@ function itemParse($upc){
 
 				//query database, assemble data for selectors
 				$Query = "SELECT d.dept_no AS dept_no,d.dept_name AS dept_name,s.subdept_no AS subdept_no,s.subdept_name AS subdept_name	
-					FROM is4c_op.departments AS d, is4c_op.subdepts AS s
+					FROM michell3_is4c_op.departments AS d, michell3_is4c_op.subdepts AS s
 					WHERE d.dept_no = s.dept_ID
 					ORDER BY d.dept_no, s.subdept_no";
 			    if(!($DatabaseResult = mysql_query($Query, $DatabaseLink)))
@@ -196,13 +196,13 @@ function itemParse($upc){
 		**/
 			require($_SERVER["DOCUMENT_ROOT"].'/src/chainedSelectors.php');
 
-			$DatabaseLink = mysql_connect("localhost","root");
+			$DatabaseLink = mysql_connect("localhost","michell3_she","m3ssimba33**");
 			if(!$DatabaseLink)
 			{
 				print("Unable to connect to database!<br>\n");
 				exit();
 			}
-			if(!(mysql_select_db("is4c_op", $DatabaseLink)))
+			if(!(mysql_select_db("michell3_is4c_op", $DatabaseLink)))
 			{
 				print("Unable to use the test database!<br>\n");
 				exit();
@@ -213,7 +213,7 @@ function itemParse($upc){
 				CS_SECOND_SELECTOR=>"subdepartment");
 
 			$Query = "SELECT d.dept_no AS dept_no,d.dept_name AS dept_name,s.subdept_no AS subdept_no,s.subdept_name AS subdept_name	
-				FROM is4c_op.departments AS d, is4c_op.subdepts AS s
+				FROM michell3_is4c_op.departments AS d, michell3_is4c_op.subdepts AS s
 				WHERE d.dept_no = s.dept_ID
 				ORDER BY d.dept_no, s.subdept_no";
 
@@ -308,7 +308,7 @@ function itemParse($upc){
 				echo "</td><td colspan=5>&nbsp;</td></tr>";
                 echo "<tr><td><h1>History (2 months)</h1>";
                 echo "<table><tr><th>Date</th><th>Type</th><th>Quantity</th><th>Unit Price</th><th>Total</th></tr>";
-                mysql_select_db("is4c_log", $DatabaseLink);
+                mysql_select_db("michell3_is4c_log", $DatabaseLink);
                 $resultHistory = mysql_query($queryHistory);
                 $total = 0;
                 $quantity = 0;

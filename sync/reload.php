@@ -44,7 +44,7 @@ $aLane = array(
 );
 
 $server = "localhost";
-$opDB = "is4c_op";
+$opDB = "michell3_is4c_op";
 $serveruser = $_SESSION["mUser"];
 $serverpass = $_SESSION["mPass"];
 
@@ -53,11 +53,11 @@ $lanepass = $_SESSION["lanePass"];
 
 $file = "/pos/is4c/download/".$table.".out";
 $dump = "select * into outfile '".$file."' from ".$table;
-$load = "load data infile '".$file."' into table is4c_op.".$table;
+$load = "load data infile '".$file."' into table michell3_is4c_op.".$table;
 
-$is4c_op_truncate = "truncate is4c_op.".$table;
+$is4c_op_truncate = "truncate michell3_is4c_op.".$table;
 $opdata_truncate = "truncate opdata.".$table;
-$opdata_insert = "insert into opdata.".$table." select * from is4c_op.".$table.";";
+$opdata_insert = "insert into opdata.".$table." select * from michell3_is4c_op.".$table.";";
 
 echo "<font color='#004080' face='helvetica'><b>".$table."</b></font>";
 echo "<p>";
@@ -77,7 +77,7 @@ else {
 if ($continue == 1) {
 
 	$continue = 0;
-	if (mysql_select_db("is4c_op", $s_conn)) $continue = 1; 
+	if (mysql_select_db("michell3_is4c_op", $s_conn)) $continue = 1; 
 	else echo "<p><font color='#800000' face=helvetica size=-1>Failed to connect to server database</font>";
 }
 
@@ -140,7 +140,7 @@ if ($continue == 1) {
 
 			if (synctable($table,$serveruser,$opDB,$lane) == 1) {
 
-				$result = mysql_query("select count(*) from is4c_op.".$table, $lane_conn);
+				$result = mysql_query("select count(*) from michell3_is4c_op.".$table, $lane_conn);
 				$row = mysql_fetch_array($result);
 				$lane_num_rows = $row[0];
 				if ($lane_num_rows == $server_num_rows) $lane_continue = 1;
@@ -177,7 +177,7 @@ echo "<p> <p><font color='#004080' face=helvetica size=-1>last run: ".$time."</f
 }
 
 function synctable($table,$serveruser,$opDB,$lane) {
-//	openlog("is4c_connect", LOG_PID | LOG_PERROR, LOG_LOCAL0);
+//	openlog("michell3_is4c_connect", LOG_PID | LOG_PERROR, LOG_LOCAL0);
 
 	if ($_SESSION["lanePass"] == "") {
 		$lanepass = "";
@@ -222,7 +222,7 @@ function synctable($table,$serveruser,$opDB,$lane) {
 /*
 
 function synctable_old($table,$serveruser,$opDB,$lane) {
-	openlog("is4c_connect", LOG_PID | LOG_PERROR, LOG_LOCAL0);
+	openlog("michell3_is4c_connect", LOG_PID | LOG_PERROR, LOG_LOCAL0);
 	exec('mysqldump -u '.$serveruser.' -t '.$opDB.' '.$table.' | mysql -h '.$lane.' '.$opDB.".$table." 2>&1", $result, $return_code);
 	foreach ($result as $v) {$output .= "$v\n";}
 	if ($return_code == 0) {

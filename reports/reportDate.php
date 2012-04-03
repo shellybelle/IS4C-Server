@@ -73,7 +73,7 @@ $db_date = $date;
 // echo "<br>Report run " .date('Y-m-d'). " for ";
 
 $db = mysql_connect('localhost',$_SESSION["mUser"],$_SESSION["mPass"]);
-mysql_select_db('is4c_log',$db);
+mysql_select_db(log',$db);
 
 //////////////////////////////////
 //
@@ -112,7 +112,7 @@ $grossQ = "SELECT ROUND(sum(total),2) as GROSS_sales
 if ($gross == 0 || !$gross) $gross = 1; //to prevent division by 0 or division by null in the query below
 
 $inventoryDeptQ = "SELECT t.dept_no, IFNULL(ROUND(sum(d.total),2), 0) AS total, IFNULL(ROUND((SUM(d.total)/$gross)*100,2), 0) as pct
-   	FROM dtransactions AS d RIGHT JOIN is4c_op.departments AS t
+   	FROM dtransactions AS d RIGHT JOIN michell3_is4c_op.departments AS t
 	ON d.department = t.dept_no
 	AND date(d.datetime) = '".$db_date."'
 	AND d.department <> 0
@@ -129,7 +129,7 @@ $inventoryDeptQ = "SELECT t.dept_no, IFNULL(ROUND(sum(d.total),2), 0) AS total, 
  */
 
 $noninventoryDeptQ = "SELECT d.department, t.dept_name, ROUND(sum(total),2) as total 
-	FROM dtransactions as d RIGHT JOIN is4c_op.departments as t 
+	FROM dtransactions as d RIGHT JOIN michell3_is4c_op.departments as t 
 	ON d.department = t.dept_no
 	AND date(d.datetime) = '".$db_date."'
 	AND d.department > 35 
@@ -146,7 +146,7 @@ $noninventoryDeptQ = "SELECT d.department, t.dept_name, ROUND(sum(total),2) as t
 // Haus add 08-06-07.
 /*
 $dept_subtotalQ = "SELECT ROUND(sum(total),2) as total 
-        FROM dtransactions as d,is4c_op.departments as t 
+        FROM dtransactions as d, michell3_is4c_op.departments as t 
         WHERE d.department = t.dept_no
         AND date(d.datetime) = '".$db_date."'
         AND d.trans_status <> 'X'
@@ -172,7 +172,7 @@ $dept_subtotalQ = "SELECT ROUND(SUM(d.total),2) AS dept_subtotal
  */
 
 $tendersQ = "SELECT t.TenderName as tender_type,ROUND(-sum(d.total),2) as total,COUNT(*) as count
-	FROM dtransactions as d,is4c_op.tenders as t 
+	FROM dtransactions as d, michell3_is4c_op.tenders as t 
 	WHERE d.trans_subtype = t.TenderCode
 	AND date(d.datetime) = '".$db_date."'
 	AND d.trans_status <> 'X' 
@@ -214,7 +214,7 @@ $basketSizeQ = "SELECT ROUND(($gross/$count),2) AS basket_size";
  */
 
 $sharePaymentsQ = "SELECT d.card_no,t.dept_name,ROUND(sum(total),2) as total 
-	FROM dtransactions as d JOIN is4c_op.departments as t ON d.department = t.dept_no
+	FROM dtransactions as d JOIN michell3_is4c_op.departments as t ON d.department = t.dept_no
 	WHERE date(datetime) = '".$db_date."'
 	AND d.department = 45
 	AND d.trans_status <> 'X'
@@ -238,7 +238,7 @@ $shareCountQ = "SELECT COUNT(total) AS peopleshare_count
  */
 
 $percentsQ = "SELECT c.discount AS volunteer_discount,(ROUND(SUM(d.unitPrice),2)) AS totals 
-	FROM dtransactions AS d LEFT JOIN is4c_op.custdata AS c 
+	FROM dtransactions AS d LEFT JOIN michell3_is4c_op.custdata AS c 
 	ON d.card_no = c.CardNo 
 	WHERE date(d.datetime) = '".$db_date."'
 	AND c.staff IN(3,4,6)
@@ -250,8 +250,8 @@ $percentsQ = "SELECT c.discount AS volunteer_discount,(ROUND(SUM(d.unitPrice),2)
 
 $memtypeQ = "SELECT m.memDesc as memType,ROUND(SUM(d.total),2) AS Sales 
 	FROM dtransactions d INNER JOIN
-  		is4c_op.custdata c ON d.card_no = c.CardNo INNER JOIN
-  		is4c_op.memtype m ON c.memType = m.memtype
+  		michell3_is4c_op.custdata c ON d.card_no = c.CardNo INNER JOIN
+  		michell3_is4c_op.memtype m ON c.memType = m.memtype
 	WHERE date(d.datetime) = '".$db_date."'
   	AND d.trans_type IN('I','D')
   	AND d.trans_status <>'X'

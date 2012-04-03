@@ -1,7 +1,7 @@
 <?php
 include_once "api/swift/swift_required.php";
 
-$mysql_connection = mysql_connect("localhost", "root");
+$mysql_connection = mysql_connect("localhost", "michell3_she","m3ssimba33**");
 if (!$mysql_connection) {
     echo "SQL Connection Failed<br /> " . mysql_error();
     exit;
@@ -17,7 +17,7 @@ $notification_days = 2;
 
 $sql_query = "
     SELECT *
-        FROM is4c_op.employees
+        FROM michell3_is4c_op.employees
             JOIN time.employee_shifts
                 USING (emp_no)
             JOIN time.shifts

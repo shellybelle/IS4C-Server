@@ -431,7 +431,7 @@ if (mysql_num_rows($result) == 1)
             SELECT time.shifts.start,
                 time.shifts.end,
                 time.volunteer_hours.id vol_id
-                FROM is4c_op.custdata
+                FROM michell3_is4c_op.custdata
                     JOIN time.employee_shifts
                         ON (CardNo = emp_no)
                     JOIN time.shifts

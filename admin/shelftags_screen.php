@@ -15,7 +15,7 @@
 
 <?php
 $db = mysql_connect('localhost',$_SESSION["mUser"],$_SESSION["mPass"]);
-mysql_select_db('is4c_op', mysql_connect('localhost',$_SESSION["mUser"],$_SESSION["mPass"]));
+mysql_select_db(op', mysql_connect('localhost',$_SESSION["mUser"],$_SESSION["mPass"]));
 
 $query = '
     SELECT dept_no,
