@@ -183,7 +183,7 @@ function itemParse($upc){
         echo "<td><b>Price</b></td><td>$<input type='text' value='$rowItem[2]' name='price' size='10'></td><td><b>Member Price</b></td><td>$<input type='text' value='$rowItem[31]' name='memberPrice' size='10'></td><td>Vendor Price</td><td>$<input type='text' value='$rowItem[32]' name='vendorPrice' size='10'/></td></tr>";
 
 	// adding inventory fields
-	echo "<tr><td></td><td></td><td>Inventory Amount</td><td><input type='text' value='$rowItem[33]' name='inventory' size='10'/></td><td>Low Limit</td><td>$<input type='text' value='$rowItem[34]' name='lowlimit' size='10'/></td></tr>";
+	echo "<tr><td></td><td></td><td>Inventory Amount</td><td><input type='text' value='$rowItem[33]' name='inventory' size='10'/></td><td>Low Limit</td><td><input type='text' value='$rowItem[34]' name='lowlimit' size='10'/></td></tr>";
 
 			if($rowItem[6] <> 0){
 	   			echo "<tr><td><font color=green><b>Sale Price:</b></font></td><td><font color=green>$rowItem[6]</font></td><td>";

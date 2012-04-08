@@ -115,8 +115,10 @@ $query = "UPDATE products
 	modified=now(),
 	deposit='$deposit',
 	memberPrice='$memberPrice',
-	vendor_price='$vendorPrice'
-	where upc ='$upc'";
+	vendor_price='$vendorPrice',
+	inventory='$inventory',
+	lowlimit='$lowlimit'
+	WHERE upc ='$upc'";
 //echo $query;
 $result = mysql_query($query);
 
