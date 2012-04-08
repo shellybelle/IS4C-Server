@@ -177,13 +177,13 @@ function itemParse($upc){
 		echo "</head>";
         echo "<BODY onLoad='putFocus(0,2);'>";
         echo "<form name=pickSubDepartment action='/item/auto_updateItems.php' method=post>";
-        echo "<div id='box'><table border=0 cellpadding=5 cellspacing=0>";
+        echo "<div id='box'><table border=0 cellpadding=4 cellspacing=0>";
         echo "<tr><td align=right><b>UPC</b></td><td><font color='red'>".$rowItem[0]."</font><input type=hidden value='$rowItem[0]' name=upc></td>";
         echo "<td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><b>Description</b></td><td><input type=text size=30 value='" . htmlspecialchars($rowItem[1], ENT_QUOTES) . "' name=descript>$rowItem[1]</td>";
-        echo "<td><b>Price</b></td><td>$<input type='text' value='$rowItem[2]' name='price' size='10'></td><td><b>Member Price</b></td><td>$<input type='text' value='$rowItem[31]' name='memberPrice' size='10'></td><td>Vendor Price</td><td>$<input type='text' value='$rowItem[32]' name='vendorPrice' size='10'/></td>";
+        echo "<td><b>Price</b></td><td>$<input type='text' value='$rowItem[2]' name='price' size='10'></td><td><b>Member Price</b></td><td>$<input type='text' value='$rowItem[31]' name='memberPrice' size='10'></td><td>Vendor Price</td><td>$<input type='text' value='$rowItem[32]' name='vendorPrice' size='10'/></td></tr>";
 
 	// adding inventory fields
-	echo "<td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>Inventory Amount</td><td>$<input type='text' value='$rowItem[33]' name='inventory' size='10'/></td><td>Low Limit</td><td>$<input type='text' value='$rowItem[34]' name='lowlimit' size='10'/></td></tr>";
+	echo "<tr><td>Inventory Amount</td><td><input type='text' value='$rowItem[33]' name='inventory' size='10'/></td><td>Low Limit</td><td>$<input type='text' value='$rowItem[34]' name='lowlimit' size='10'/></td></tr>";
 
 			if($rowItem[6] <> 0){
 	   			echo "<tr><td><font color=green><b>Sale Price:</b></font></td><td><font color=green>$rowItem[6]</font></td><td>";
