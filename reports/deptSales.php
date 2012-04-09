@@ -251,7 +251,7 @@ if(isset($lowLimit)) {
 		p.inventory AS Qty,
 		p.lowlimit AS Limit
 		FROM michell3_is4c_op.products p
-		WHERE p.lowlimit == "10"
+		WHERE p.inventory < 10
 		AND p.department IN(".$_SESSION['deptArray'].") 
 		$inUseA
 		GROUP BY p.upc
