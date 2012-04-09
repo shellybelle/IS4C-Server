@@ -124,7 +124,7 @@ if($sort == 'Department'){
 if(isset($inUse)) {
 	$inUseA = "AND p.inUse = 1";
 } else {
-	$inUseA = "AND p.inUse IN(0,1)";
+	$inUseA = "AND p.inUse IN (0,1)";
 }
 	
 if (isset($salesTotal)) {
@@ -252,7 +252,7 @@ if(isset($lowLimit)) {
 		p.lowlimit AS Limit
 		FROM michell3_is4c_op.products p
 		WHERE p.inventory <= p.lowlimit
-		AND p.department IN(".$_SESSION['deptArray'].") 
+		AND p.department IN (".$_SESSION['deptArray'].") 
 		$inUseA
 		GROUP BY p.upc
 		ORDER BY p.lowlimit - p.inventory";
