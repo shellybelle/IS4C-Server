@@ -51,7 +51,7 @@ function itemParse($upc){
         echo "<table border=0 cellpadding=5>";
 		echo "<tr><td align=right><b>UPC</b></td><td><font color='red'></font>
 			<input type=text value=$upc name=upc></td>";
-		echo "</tr><tr><td><b>KrakkenprodFuncDescription</b></td><td>
+		echo "</tr><tr><td><b>Description</b></td><td>
 			<input type=text size=30 name=descript></td>";
 		echo "<td><b>Member Price</b></td><td>$<input type='text' name='memberPrice' size='6'></td></tr><tr><td><b>Regular Price</b></td><td>$<input type='text' name='price' size='6'></td><td><b>Vendor Price</b></td><td>$<input type='text' name='vendorPrice' size='6' /></td></table></div><div id='box'>";
         echo "<table width='100%' border=0 cellpadding=5><tr>";
@@ -180,10 +180,10 @@ function itemParse($upc){
         echo "<div id='box'><table border=0 cellpadding=5 cellspacing=0>";
         echo "<tr><td align=right><b>UPC</b></td><td><font color='red'>".$rowItem[0]."</font><input type=hidden value='$rowItem[0]' name=upc></td></tr>";
         echo "<tr><td><b>Description</b></td><td><input type=text size=30 value='" . htmlspecialchars($rowItem[1], ENT_QUOTES) . "' name=descript>$rowItem[1]</td>";
-        echo "<td><b>Price</b></td><td>$<input type='text' value='$rowItem[2]' name='price' size='10'></td><td><b>Member Price</b></td><td>$<input type='text' value='$rowItem[31]' name='memberPrice' size='10'></td><td>Vendor Price</td><td>$<input type='text' value='$rowItem[32]' name='vendorPrice' size='10'/></td></tr>";
+        echo "<td><b>Price</b></td><td>$<input type='text' value='$rowItem[2]' name='price' size='10'></td><td><b>Member Price</b></td><td>$<input type='text' value='$rowItem[31]' name='memberPrice' size='10'></td><td><b>Vendor Price</b></td><td>$<input type='text' value='$rowItem[32]' name='vendorPrice' size='10'/></td></tr>";
 
 	// adding inventory fields
-	echo "<tr><td></td><td></td><td>Inventory Amount</td><td><input type='text' value='$rowItem[33]' name='inventory' size='10'/></td><td>Low Limit</td><td><input type='text' value='$rowItem[34]' name='lowlimit' size='10'/></td></tr>";
+	echo "<tr><td></td><td></td><td><b>Inventory Amount</b></td><td><input type='text' value='$rowItem[33]' name='inventory' size='10'/></td><td><b>Low Limit</b></td><td><input type='text' value='$rowItem[34]' name='lowlimit' size='10'/></td></tr>";
 
 			if($rowItem[6] <> 0){
 	   			echo "<tr><td><font color=green><b>Sale Price:</b></font></td><td><font color=green>$rowItem[6]</font></td><td>";

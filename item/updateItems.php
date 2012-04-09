@@ -129,7 +129,12 @@ $row = mysql_fetch_array($result1);
 echo "<table border=0>";
         echo "<tr><td align=right><b>UPC</b></td><td><font color='red'>".$row[0]."</font><input type='hidden' value='$row[0]' name='upc'></td>";
         echo "</tr><tr><td><b>KrakkenDescription</b></td><td>$row[1]</td>";
-        echo "<td><b>Price</b></td><td>$$row[2]</td><td>Member Price</td><td>$$row[31]</td></tr><tr><td><b>Vendor Price</b></td><td>$$row[32]</tr></tr></table>";
+        echo "<td><b>Price</b></td><td>$$row[2]</td><td><b>Member Price</b></td><td>$$row[31]</td><td><b>Vendor Price</b></td><td>$$row[32]</td></tr>";
+
+	// inventory fields
+	echo "<tr><td></td><td></td><td><b>Inventory Amount</b></td><td>$row[33]</td><td><b>Low Limit</b></td><td>$row[34]</td></tr>";
+
+	echo "</table>";
         echo "<table border=0><tr>";
         echo "<th>Dept<th>subDept<th>FS<th>Scale<th>QtyFrc<th>NoDisc<th>inUse<th>deposit</b>";
         echo "</tr>";
