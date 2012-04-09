@@ -37,7 +37,7 @@ include($_SERVER["DOCUMENT_ROOT"].'/src/departments.html');
 			</td>
 			<td>			
 			<?php
-				$today = date("Y-m-d") . "<br />";
+				$today = date("Y-m-d");
 			?>
 				<p><input type=text size=10 name=date1 value="<?php echo $today ?>" onfocus="showCalendarControl(this);">&nbsp;&nbsp;*</p>
 				<p><input type=text size=10 name=date2 value="<?php echo $today ?>" onfocus="showCalendarControl(this);">&nbsp;&nbsp;*</p>
