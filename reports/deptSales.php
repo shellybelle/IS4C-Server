@@ -128,7 +128,7 @@ if(isset($inUse)) {
 }
 	
 if (isset($salesTotal)) {
-	echo "<p><b><u>Total Sales:</u></b></p>"
+	echo "<p><b><u>Total Sales:</u></b></p>";
 	
 	//$quesry1 - Total sales
 	$query1 = "SELECT d.dept_name,ROUND(SUM(t.total),2) AS total
@@ -196,7 +196,7 @@ if(isset($openRing)) {
 } 
 			
 if(isset($pluReport)){
-	echo "<p><b><u>Sales Per Plu:</u></b></p>"
+	echo "<p><b><u>Sales Per Plu:</u></b></p>";
 	
 	// $query3 - Sales per PLU
 	$query3 = "SELECT DISTINCT 
@@ -239,7 +239,7 @@ if(isset($pluReport)){
 }
 
 if(isset($lowLimit)) {
-	echo "<p><b><u>Items Below Low Limit:</u></b></p>"
+	echo "<p><b><u>Items Below Low Limit:</u></b></p>";
 	
 	// $query4 - Items Below Low Limit
 	$query4 = "SELECT DISTINCT 
