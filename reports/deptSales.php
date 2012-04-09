@@ -81,6 +81,9 @@ else {
 
 echo "Report sorted by ";
 echo $sort . " on ";
+if(isset($_GET('lowLimit'))) {
+	echo " and low limit";
+}
 echo "</br>";
 echo $today;
 echo "</br>";
