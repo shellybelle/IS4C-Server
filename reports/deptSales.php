@@ -249,7 +249,7 @@ if(isset($lowLimit)) {
 		p.subdept AS Subdept,
 		p.scale as Scale
 		p.inventory AS Qty,
-		p.lowlimit AS Limit,
+		p.lowlimit AS Limit
 		FROM michell3_is4c_op.products p
 		WHERE p.inventory <= p.lowlimit
 		AND p.department IN(".$_SESSION['deptArray'].") 
@@ -261,7 +261,7 @@ if(isset($lowLimit)) {
 	$result4 = mysql_query($query4);
 
 	echo "<table border=1 cellpadding=3 cellspacing=3>";
-	echo "<tr><td>UPC</td><td>Description</td><td>Dept</td><td>Subdept</td><td>Scale</td></tr><td>Qty</td><td>Limit</td>";
+	echo "<tr><td>UPC</td><td>Description</td><td>Dept</td><td>Subdept</td><td>Scale</td><td>Qty</td><td>Limit</td></tr>";
 	
 	if (!$result4) {
 		$message1  = 'Invalid query: ' . mysql_error() . "\n";
