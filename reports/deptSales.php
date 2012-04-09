@@ -128,6 +128,9 @@ if(isset($inUse)) {
 }
 	
 if (isset($salesTotal)) {
+	echo "<p><b><u>Total Sales:</u></b></p>"
+	
+	//$quesry1 - Total sales
 	$query1 = "SELECT d.dept_name,ROUND(SUM(t.total),2) AS total
 		FROM michell3_is4c_op.departments AS d, michell3_is4c_log.dtransactions AS t
 		WHERE d.dept_no = t.department
@@ -158,6 +161,8 @@ if (isset($salesTotal)) {
 }
 			
 if(isset($openRing)) {
+	echo "<p><b><u>Open Ring Sales:</u></b></p>";
+	
 	//$query2 - Total open dept. ring
 	$query2 = "SELECT d.dept_name AS Department,ROUND(SUM(t.total),2) AS open_dept
 		FROM michell3_is4c_op.departments AS d, michell3_is4c_log.dtransactions AS t 
@@ -191,6 +196,8 @@ if(isset($openRing)) {
 } 
 			
 if(isset($pluReport)){
+	echo "<p><b><u>Sales Per Plu:</u></b></p>"
+	
 	// $query3 - Sales per PLU
 	$query3 = "SELECT DISTINCT 
 		p.upc AS PLU,
@@ -228,6 +235,46 @@ if(isset($pluReport)){
 	}
 
 	echo "</table>\n";
+
+}
+
+if(isset($lowLimit)) {
+	echo "<p><b><u>Items Below Low Limit:</u></b></p>"
+	
+	// $query4 - Items Below Low Limit
+	$query4 = "SELECT DISTINCT 
+		p.upc AS PLU,
+		p.description AS Description,
+		p.department AS Dept,
+		p.subdept AS Subdept,
+		p.scale as Scale
+		p.inventory AS Qty,
+		p.lowlimit AS Limit,
+		FROM michell3_is4c_op.products p
+		WHERE p.inventory <= p.lowlimit
+		AND p.department IN(".$_SESSION['deptArray'].") 
+		AND p.upc NOT LIKE '%DP%'
+		$inUseA
+		GROUP BY p.upc
+		ORDER BY $order";
+
+	$result4 = mysql_query($query4);
+
+	echo "<table border=1 cellpadding=3 cellspacing=3>";
+	echo "<tr><td>UPC</td><td>Description</td><td>Dept</td><td>Subdept</td><td>Scale</td></tr><td>Qty</td><td>Limit</td>";
+	
+	if (!$result4) {
+		$message1  = 'Invalid query: ' . mysql_error() . "\n";
+		$message1 .= 'Whole query: ' . $query4;
+			die($message1);
+	}
+
+	while ($myrow1 = mysql_fetch_row($result4)) { //create array from query
+		printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n",$myrow1[0], $myrow1[1],$myrow1[2],$myrow1[3],$myrow1[4],$myrow1[5],$myrow1[6]);
+	}
+
+	echo "</table>\n";
+
 
 }
 
