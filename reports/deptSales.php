@@ -253,7 +253,6 @@ if(isset($lowLimit)) {
 		FROM michell3_is4c_op.products p
 		WHERE p.inventory <= p.lowlimit
 		AND p.department IN(".$_SESSION['deptArray'].") 
-		AND p.upc NOT LIKE '%DP%'
 		$inUseA
 		GROUP BY p.upc
 		ORDER BY p.lowlimit";
