@@ -46,6 +46,24 @@ include($_SERVER["DOCUMENT_ROOT"].'/src/departments.html');
 	</table>
 </div>
 <div id="box">
+<div id="box">
+	<table border="0" cellspacing="3" cellpadding="3">
+		<tr>
+			<td align="right">
+				<p><b>Date Start</b> </p>
+		    	<p><b>End</b></p>
+			</td>
+			<td>			
+				<p><input type=text size=10 name=date1 onfocus="showCalendarControl(this);">&nbsp;&nbsp;*</p>
+				<p><input type=text size=10 name=date2 onfocus="showCalendarControl(this);">&nbsp;&nbsp;*</p>
+			</td>
+			<td colspan=2>
+				<p>Date format is YYYY-MM-DD</br>(e.g. 2004-04-01 = April 1, 2004)</p>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="box">
 	<table border="0" cellspacing="3" cellpadding="3">
 <!--		<tr> 
 			<td align="right"><p><b>Group info by:</b></p></td>
