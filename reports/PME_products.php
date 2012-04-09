@@ -228,13 +228,13 @@ $opts['fdd']['special_price'] = array(
 $opts['fdd']['inventory'] = array(
   'name'     => 'Inventory Amount',
   'select'   => 'T',
-  'maxlen'   => 9,
+  'maxlen'   => 4,
   'sort'     => true
 );
 $opts['fdd']['lowlimit'] = array(
   'name'     => 'Low Limit',
   'select'   => 'T',
-  'maxlen'   => 9,
+  'maxlen'   => 4,
   'sort'     => true
 );
 $opts['fdd']['id'] = array(
