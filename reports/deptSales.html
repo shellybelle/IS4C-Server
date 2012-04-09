@@ -36,6 +36,9 @@ include($_SERVER["DOCUMENT_ROOT"].'/src/departments.html');
 		    	<p><b>End</b></p>
 			</td>
 			<td>			
+			<?php
+				echo date("Y-m-d") . "<br />";
+			?>
 				<p><input type=text size=10 name=date1 onfocus="showCalendarControl(this);">&nbsp;&nbsp;*</p>
 				<p><input type=text size=10 name=date2 onfocus="showCalendarControl(this);">&nbsp;&nbsp;*</p>
 			</td>
