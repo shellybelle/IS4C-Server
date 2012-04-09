@@ -136,6 +136,7 @@ $row = mysql_fetch_array($prodR);
 
         echo "<table border=0>";
         echo "<tr><td align=right><b>UPC</b></td><td><font color='red'>".$upc."</font><input type=hidden value='".$upc."' name=upc></td>";
+	echo krakken insertItem;
         echo "</tr><tr><td><b>Description</b></td><td>".$descript."</td>";
         echo "<td><b>Regular Price</b></td><td>".$price."</td></tr><td><b>Member Price</b></td><td>".$memberPrice."</td><td><b>Vendor Price</b></td><td>" . $vendorPrice  . "</td></table>";
         echo "<table border=0><tr>";

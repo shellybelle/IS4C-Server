@@ -128,6 +128,7 @@ $row = mysql_fetch_array($result1);
 
 echo "<table border=0>";
         echo "<tr><td align=right><b>UPC</b></td><td><font color='red'>".$row[0]."</font><input type='hidden' value='$row[0]' name='upc'></td>";
+	echo krakken updateItems;
         echo "</tr><tr><td><b>Description</b></td><td>$row[1]</td>";
         echo "<td><b>Price</b></td><td>$$row[2]</td><td>Member Price</td><td>$$row[31]</td></tr><tr><td><b>Vendor Price</b></td><td>$$row[32]</tr></tr></table>";
         echo "<table border=0><tr>";
