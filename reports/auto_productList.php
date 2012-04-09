@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Fannie - Item Maintenance</title>
+<title>Inventory Solutions - Bread & Roses</title>
 <link rel="STYLESHEET" href="../src/style.css" type="text/css">
 </head>
 <body bgcolor="FFFFFF">
@@ -14,14 +14,14 @@
     <tr>
      <td width="750" colspan="3">
      <span style="font-size:28px;color:330066">
-     Fannie
+     Inventory Solutions - Bread & Roses
      </span>
      </td>
     </tr>
     <tr>
      <td width="330">
      <span style="font-size:20px;color:666666">
-     IS4C maintenance & reporting
+     IS4C Maintenance & Reporting
      </span>
      </td>
      <td width="400" align="right">
@@ -134,7 +134,7 @@ tak ---->
  </tr>
  <tr>
   <td colspan="3" bgcolor="FFFFFF" align="right">
-  Copyleft &#0169; 2006, <a href="http://www.designslife.com" style="font-size:12px;color:AAAAAA">designslife</a>. All Rights Reserved.
+  Copyleft &#0169; 2012, Inventory Solutions. All Rights Reserved.
   </td>
  </tr>
 </table>
