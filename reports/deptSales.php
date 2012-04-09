@@ -256,7 +256,7 @@ if(isset($lowLimit)) {
 		AND p.upc NOT LIKE '%DP%'
 		$inUseA
 		GROUP BY p.upc
-		ORDER BY p.lowlimit - p.inventory";
+		ORDER BY p.lowlimit";
 
 	$result4 = mysql_query($query4);
 
