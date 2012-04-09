@@ -51,7 +51,7 @@ function itemParse($upc){
         echo "<table border=0 cellpadding=5>";
 		echo "<tr><td align=right><b>UPC</b></td><td><font color='red'></font>
 			<input type=text value=$upc name=upc></td>";
-		echo "</tr><tr><td><b>Description</b></td><td>
+		echo "</tr><tr><td><b>KrakkenDescription</b></td><td>
 			<input type=text size=30 name=descript></td>";
 		echo "<td><b>Member Price</b></td><td>$<input type='text' name='memberPrice' size='6'></td></tr><tr><td><b>Regular Price</b></td><td>$<input type='text' name='price' size='6'></td><td><b>Vendor Price</b></td><td>$<input type='text' name='vendorPrice' size='6' /></td></table></div><div id='box'>";
         echo "<table width='100%' border=0 cellpadding=5><tr>";
