@@ -83,7 +83,7 @@ echo "Report sorted by ";
 echo $sort;
 
 if(isset($lowLimit)) {
-	echo " and low limit on ";
+	echo " and LOW LIMIT on ";
 }
 else {
 	echo " on ";
