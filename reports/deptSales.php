@@ -157,7 +157,7 @@ if (isset($salesTotal)) {
 		printf("<tr><td>%s</td><td>%s</td></tr>\n",$myrow[0], $myrow[1]);
 	} 
 			
-	echo "</table>\n";
+	echo "</table>\n<br />";
 }
 			
 if(isset($openRing)) {
@@ -191,7 +191,7 @@ if(isset($openRing)) {
   		printf("<tr><td>%s</td><td>%s</td></tr>\n",$myrow[0], $myrow[1]);						
 	}
 	
-	echo "</table>\n";
+	echo "</table>\n<br />";
 
 } 
 			
@@ -234,7 +234,7 @@ if(isset($pluReport)){
 		printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n",$myrow[0], $myrow[1],$myrow[2],$myrow[3],$myrow[4],$myrow[5],$myrow[6],$myrow[7]);
 	}
 
-	echo "</table>\n";
+	echo "</table>\n<br />";
 
 }
 
@@ -251,7 +251,7 @@ if(isset($lowLimit)) {
 		p.inventory AS Qty,
 		p.lowlimit AS Limit
 		FROM michell3_is4c_op.products p
-		WHERE p.inventory < 10
+		WHERE p.inventory <= p.lowlimit
 		AND p.department IN(".$_SESSION['deptArray'].") 
 		$inUseA
 		GROUP BY p.upc
