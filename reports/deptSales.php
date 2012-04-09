@@ -80,13 +80,13 @@ else {
 }
 
 echo "Report sorted by ";
-echo $sort . " on ";
+echo $sort;
 
-if(!isset($lowLimit)) {
-	echo "0";
+if(isset($lowLimit)) {
+	echo " and low limit on ";
 }
 else {
-	echo $lowLimit;
+	echo " on ";
 }
 echo "</br>";
 echo $today;
