@@ -255,7 +255,7 @@ if(isset($lowLimit)) {
 		AND p.department IN (".$_SESSION['deptArray'].") 
 		$inUseA
 		GROUP BY p.upc
-		ORDER BY p.lowlimit - p.inventory";
+		ORDER BY p.lowlimit - p.inventory;";
 	echo "query 4: ".$query4;
 	$result4 = mysql_query($query4);
 
