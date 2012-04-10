@@ -153,7 +153,7 @@ if (!$result4) {
 		die($message1);
 }
 
-if (mysql_num_rows($result) == 0) {
+if (mysql_num_rows($result4) == 0) {
 
 }
 else {
