@@ -47,18 +47,21 @@ include($_SERVER["DOCUMENT_ROOT"].'/src/departments.html');
 </div>
 <div id="box">
 	<table border="0" cellspacing="3" cellpadding="3">
-<!--		<tr> 
-			<td align="right"><p><b>Group info by:</b></p></td>
-			<td> 
-				<select name="sort" size="1">
-					<option>PLU</option>
-					<option>Department</option>
-					<option>Date</option>
-				</select> 
+		<tr>
+			<td align="right">
+				<p><b>Display Inventory Warnings</b></p>
 			</td>
-			<td>&nbsp;</td>
+			<td>
+				<input type="checkbox" value="1" name="lowLimit">
+			</td>
+			<td>
+				<p><i>Prioritize items below the low limit</i></p>
+			</td>
 		</tr>
--->		<tr>
+		<tr> 
+			<td align="center"><p>-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-&nbsp;-</p></td>
+		</tr>
+		<tr>
 			<td align="right"><p><b>Sales totals</b></p></td>
 			<td><input type="checkbox" value="1" name="salesTotal"></td>
 			<td>&nbsp;</td>
@@ -96,17 +99,6 @@ include($_SERVER["DOCUMENT_ROOT"].'/src/departments.html');
 			<td align="right"><p><b>In use</b></p></td>
 			<td><input type="checkbox" value="1" name="inUse"></td>
 			<td><p><i>Filter out items that are NOT currently in use</i></p></td>
-		</tr>
-		<tr>
-			<td align="right">
-				<p><b>Low Limit</b></p>
-			</td>
-			<td>
-				<input type="checkbox" value="1" name="lowLimit">
-			</td>
-			<td>
-				<p><i>Prioritize items below the low limit</i></p>
-			</td>
 		</tr>
 		<tr>
 			<td align="center">&nbsp;</td>
