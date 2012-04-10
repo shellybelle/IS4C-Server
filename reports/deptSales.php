@@ -249,14 +249,14 @@ if(isset($lowLimit)) {
 		p.subdept AS Subdept,
 		p.scale as Scale,
 		p.inventory AS Qty,
-		p.lowlimit AS Limit
+		p.lowlimit AS Lowlimit
 		FROM michell3_is4c_op.products p
 		WHERE p.inventory <= p.lowlimit
 		AND p.department IN (".$_SESSION['deptArray'].") 
 		$inUseA
 		GROUP BY p.upc
 		ORDER BY p.lowlimit - p.inventory;";
-	echo "query 4: ".$query4;
+
 	$result4 = mysql_query($query4);
 
 	echo "<table border=1 cellpadding=3 cellspacing=3>";
