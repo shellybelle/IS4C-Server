@@ -153,10 +153,7 @@ if (!$result4) {
 		die($message1);
 }
 
-if (mysql_num_rows($result4) == 0) {
-
-}
-else {
+if (mysql_num_rows($result4) > 0) {
 	echo "<p><b><u><font color=\"red\" >WARNING: Items Below Low Limit:</font></u></b></p>";
 	echo "<tr><td>UPC</td><td>Description</td><td>Dept</td><td>Subdept</td><td>Scale</td><td>Qty</td><td>Limit</td></tr>";
 
