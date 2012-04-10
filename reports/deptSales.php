@@ -126,7 +126,47 @@ if(isset($inUse)) {
 } else {
 	$inUseA = "AND p.inUse IN (0,1)";
 }
+
+// $query4 - Items Below Low Limit
+$query4 = "SELECT DISTINCT 
+	p.upc AS PLU,
+	p.description AS Description,
+	p.department AS Dept,
+	p.subdept AS Subdept,
+	p.scale as Scale,
+	p.inventory AS Qty,
+	p.lowlimit AS Lowlimit
+	FROM michell3_is4c_op.products p
+	WHERE p.inventory <= p.lowlimit
+	AND p.department IN (".$_SESSION['deptArray'].") 
+	$inUseA
+	GROUP BY p.upc
+	ORDER BY p.lowlimit - p.inventory;";
+
+$result4 = mysql_query($query4);
+
+echo "<table border=1 cellpadding=3 cellspacing=3>";
 	
+if (!$result4) {
+	$message1  = 'Invalid query: ' . mysql_error() . "\n";
+	$message1 .= 'Whole query: ' . $query4;
+		die($message1);
+}
+
+if (mysql_num_rows($result) == 0) {
+
+}
+else {
+	echo "<p><b><u><font color=\"red\" >WARNING: Items Below Low Limit:</font></u></b></p>";
+	echo "<tr><td>UPC</td><td>Description</td><td>Dept</td><td>Subdept</td><td>Scale</td><td>Qty</td><td>Limit</td></tr>";
+
+	while ($myrow1 = mysql_fetch_row($result4)) { //create array from query
+		printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n",$myrow1[0], $myrow1[1],$myrow1[2],$myrow1[3],$myrow1[4],$myrow1[5],$myrow1[6]);
+	}
+
+	echo "</table>\n";
+}
+
 if (isset($salesTotal)) {
 	echo "<p><b><u>Total Sales:</u></b></p>";
 	
@@ -235,45 +275,6 @@ if(isset($pluReport)){
 	}
 
 	echo "</table>\n<br />";
-
-}
-
-if(isset($lowLimit)) {
-	echo "<p><b><u>Items Below Low Limit:</u></b></p>";
-	
-	// $query4 - Items Below Low Limit
-	$query4 = "SELECT DISTINCT 
-		p.upc AS PLU,
-		p.description AS Description,
-		p.department AS Dept,
-		p.subdept AS Subdept,
-		p.scale as Scale,
-		p.inventory AS Qty,
-		p.lowlimit AS Lowlimit
-		FROM michell3_is4c_op.products p
-		WHERE p.inventory <= p.lowlimit
-		AND p.department IN (".$_SESSION['deptArray'].") 
-		$inUseA
-		GROUP BY p.upc
-		ORDER BY p.lowlimit - p.inventory;";
-
-	$result4 = mysql_query($query4);
-
-	echo "<table border=1 cellpadding=3 cellspacing=3>";
-	echo "<tr><td>UPC</td><td>Description</td><td>Dept</td><td>Subdept</td><td>Scale</td><td>Qty</td><td>Limit</td></tr>";
-	
-	if (!$result4) {
-		$message1  = 'Invalid query: ' . mysql_error() . "\n";
-		$message1 .= 'Whole query: ' . $query4;
-			die($message1);
-	}
-
-	while ($myrow1 = mysql_fetch_row($result4)) { //create array from query
-		printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>\n",$myrow1[0], $myrow1[1],$myrow1[2],$myrow1[3],$myrow1[4],$myrow1[5],$myrow1[6]);
-	}
-
-	echo "</table>\n";
-
 
 }
 
