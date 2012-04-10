@@ -63,19 +63,14 @@ if (isset($_GET['allDepts']) && !isset($_GET['dept'])) {
 	$_SESSION['deptArray'] = "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,40";
 	$arrayName = "ALL DEPARTMENTS";
 }
-else if (isset($_GET['allDepts']) || isset($_GET['dept'])) {
-	
-	if($_GET['allDepts'] == 1) {
-		$_SESSION['deptArray'] = "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,40";
-		$arrayName = "ALL DEPARTMENTS";
-	} else {
-		$allDepts = 0;
-	}
-
+else if (isset($_GET['dept'])) {
 	if(is_array($_GET['dept'])) {
 		$_SESSION['deptArray'] = implode(",",$_GET['dept']);
 		$arrayName = $_SESSION['deptArray'];
 	} 
+}
+else {
+	$allDepts = 0;
 }
 
 echo "Report sorted by ";
