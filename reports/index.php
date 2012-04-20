@@ -26,8 +26,8 @@
 <head>
 </head>
 <body>
-	<a href="auto_deptSales.php">Department Sales</a></br>
-	Product movements by department or group of departments
+	<a href="auto_deptSales.php">Sales Summaries</a></br>
+	Total product movements by department or group of departments
 </br></br>
 	<a href="auto_productList.php">Product List</a></br>
 	List all products for a department or group of departments
